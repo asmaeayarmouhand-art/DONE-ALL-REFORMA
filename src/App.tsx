@@ -9,6 +9,8 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { QuoteModal } from './components/QuoteModal';
 import { AuthModal } from './components/AuthModal';
+import { LegalModal, LegalDocType } from './components/LegalModal';
+import { CookieBanner } from './components/CookieBanner';
 import { FloatingActions } from './components/FloatingActions';
 import { UserAccount } from './types';
 
@@ -16,6 +18,10 @@ export default function App() {
   const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState<UserAccount | null>(null);
+
+  // Legal modal state
+  const [isLegalModalOpen, setIsLegalModalOpen] = useState(false);
+  const [legalDocType, setLegalDocType] = useState<LegalDocType>('legal-notice');
 
   // Restore session from localStorage if present
   useEffect(() => {
@@ -44,6 +50,11 @@ export default function App() {
   const handleLogout = () => {
     localStorage.removeItem('doneall_user');
     setCurrentUser(null);
+  };
+
+  const handleOpenLegalDoc = (type: LegalDocType) => {
+    setLegalDocType(type);
+    setIsLegalModalOpen(true);
   };
 
   return (
@@ -83,6 +94,9 @@ export default function App() {
       <Footer
         onOpenQuote={handleOpenQuote}
         onOpenAuth={handleOpenAuth}
+        onOpenLegalNotice={() => handleOpenLegalDoc('legal-notice')}
+        onOpenPrivacyPolicy={() => handleOpenLegalDoc('privacy-policy')}
+        onOpenCookieSettings={() => handleOpenLegalDoc('cookie-settings')}
       />
 
       {/* Quote Request Modal */}
@@ -96,6 +110,19 @@ export default function App() {
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
         onLoginSuccess={handleLoginSuccess}
+      />
+
+      {/* Legal Documents Modal (Legal Notice, Privacy Policy, Cookie Settings) */}
+      <LegalModal
+        isOpen={isLegalModalOpen}
+        onClose={() => setIsLegalModalOpen(false)}
+        initialDoc={legalDocType}
+      />
+
+      {/* GDPR Cookie Consent Banner */}
+      <CookieBanner
+        onOpenCookieSettings={() => handleOpenLegalDoc('cookie-settings')}
+        onOpenPrivacyPolicy={() => handleOpenLegalDoc('privacy-policy')}
       />
 
       {/* Floating Action Button (Direct Call) */}

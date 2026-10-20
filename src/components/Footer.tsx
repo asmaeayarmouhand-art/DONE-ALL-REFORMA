@@ -5,9 +5,18 @@ import { COMPANY_CONTACT } from '../data/mockData';
 interface FooterProps {
   onOpenQuote: () => void;
   onOpenAuth: () => void;
+  onOpenLegalNotice: () => void;
+  onOpenPrivacyPolicy: () => void;
+  onOpenCookieSettings: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenQuote, onOpenAuth }) => {
+export const Footer: React.FC<FooterProps> = ({
+  onOpenQuote,
+  onOpenAuth,
+  onOpenLegalNotice,
+  onOpenPrivacyPolicy,
+  onOpenCookieSettings,
+}) => {
   return (
     <footer className="bg-slate-950 text-slate-400 border-t border-slate-800 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
@@ -136,10 +145,28 @@ export const Footer: React.FC<FooterProps> = ({ onOpenQuote, onOpenAuth }) => {
         {/* Bottom bar */}
         <div className="mt-12 sm:mt-14 pt-6 sm:pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-slate-500 text-center sm:text-left">
           <p>© {new Date().getFullYear()} DONE ALL Renovations S.L. All rights reserved.</p>
-          <div className="flex flex-wrap justify-center sm:justify-end items-center gap-4 sm:gap-6">
-            <span className="hover:text-slate-300 cursor-pointer py-1">Legal Notice</span>
-            <span className="hover:text-slate-300 cursor-pointer py-1">Privacy Policy</span>
-            <span className="hover:text-slate-300 cursor-pointer py-1">Cookie Settings</span>
+          <div className="flex flex-wrap justify-center sm:justify-end items-center gap-3 sm:gap-6">
+            <button
+              type="button"
+              onClick={onOpenLegalNotice}
+              className="hover:text-slate-300 transition-colors py-1 cursor-pointer"
+            >
+              Legal Notice
+            </button>
+            <button
+              type="button"
+              onClick={onOpenPrivacyPolicy}
+              className="hover:text-slate-300 transition-colors py-1 cursor-pointer"
+            >
+              Privacy Policy
+            </button>
+            <button
+              type="button"
+              onClick={onOpenCookieSettings}
+              className="hover:text-slate-300 transition-colors py-1 cursor-pointer"
+            >
+              Cookie Settings
+            </button>
             <span className="text-teal-400/90 font-medium py-1">5-Year Written Guarantee</span>
           </div>
         </div>
