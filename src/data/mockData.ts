@@ -1,10 +1,16 @@
 import { ServiceItem, ProjectItem, Testimonial, FaqItem } from '../types';
 
-export const HERO_IMAGE = '/src/assets/images/hero_reform_malaga_1792507180289.jpg';
-export const KITCHEN_AFTER_IMAGE = '/src/assets/images/reform_kitchen_modern_1792507197640.jpg';
-export const KITCHEN_BEFORE_IMAGE = '/src/assets/images/reform_before_dated_1792507198892.jpg';
-export const BATHROOM_AFTER_IMAGE = '/src/assets/images/reform_bathroom_luxury_1792507198053.jpg';
-export const VILLA_SALON_IMAGE = '/src/assets/images/reform_villa_salon_1792507215859.jpg';
+import heroImage from '../assets/images/hero_reform_malaga_1792507180289.jpg';
+import kitchenAfterImage from '../assets/images/reform_kitchen_modern_1792507197640.jpg';
+import kitchenBeforeImage from '../assets/images/reform_before_dated_1792507198892.jpg';
+import bathroomAfterImage from '../assets/images/reform_bathroom_luxury_1792507198053.jpg';
+import villaSalonImage from '../assets/images/reform_villa_salon_1792507215859.jpg';
+
+export const HERO_IMAGE = heroImage;
+export const KITCHEN_AFTER_IMAGE = kitchenAfterImage;
+export const KITCHEN_BEFORE_IMAGE = kitchenBeforeImage;
+export const BATHROOM_AFTER_IMAGE = bathroomAfterImage;
+export const VILLA_SALON_IMAGE = villaSalonImage;
 
 export const COMPANY_CONTACT = {
   name: 'DONE ALL Renovations',
